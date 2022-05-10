@@ -2,7 +2,9 @@
     font-family: 'Roboto', sans-serif;
     color: #662418;
 }
-
+p{
+    margin: 0;
+}
 body{
     height: 100vh;
     background-color: #E1E1E1;
@@ -135,18 +137,27 @@ main{
     background-color: #662418;
     color: white;
 }
-.total-price{
-    margin-top: 5px;
+
+.result-price{
     text-align: right;
 }
 
 .thank-text{
     text-align: center;
+    margin-top: 40px;
 }
 
+.discount-wrapper{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+}
 
 @media(max-width: 690px) {
     .price-wrapper{
+        width: 90%;
+    }
+    .discount-wrapper{
         width: 90%;
     }
 }
@@ -156,6 +167,10 @@ main{
         width: 95%;
         margin-right: 20px;
         justify-content: space-around;
+    }
+    .discount-wrapper{
+        width: 95%;
+        font-size: 14px;
     }
     .name-category{
         font-size: 12px;

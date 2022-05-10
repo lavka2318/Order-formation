@@ -2,19 +2,45 @@ const form = document.querySelector(".add-form");
 const selectCategory = document.querySelector(".select-category");
 let dataOrder = [];
 
-localStorage.setItem("number", 0);
+localStorage.setItem("number", 1);
 
 categories.forEach(category => {
     selectCategory.innerHTML += ` <option name="${category}">${category}</option>`;
 });
 
-form.innerHTML += `<label class="price">Цена за кг: ${localStorage.getItem(categories[0])}</label>
+form.innerHTML += `<label class="price">Цена за кг: ${localStorage.getItem(categories[0])} руб.</label>
                     <div>
                         <label style="font-size: 14px;">Вес: </label>
                         <input class="input-weight" placeholder="Введите вес...">
                     </div>
                    <button class="add-button" onclick="addRecord()">Добавить</button>`;
 
+const tbody = document.querySelector(".tbody");
+tbody.innerHTML += `<tr class="record">
+                            <td class="td-number td-text">
+                                ${1}
+                            </td>
+                            <td >
+                                Доставка
+                            </td>
+                            <td class="td-text">
+                                ${localStorage.getItem('Доставка')} руб.
+                            </td>
+                            <td class="td-text">
+                                ${(1).toFixed(2)}
+                            </td>
+                            <td class="td-text">
+                                ${(+localStorage.getItem('Доставка')).toFixed(2)}
+                            </td>
+                            <td >
+                                <button value="1" class="delete-btn" >Удалить</button>
+                            </td>
+                        </tr>`;
+dataOrder.push({
+    number: 1,
+    totalPrice:(+localStorage.getItem('Доставка')).toFixed(2)
+});
+btnClickEvent();
 
 function changePrice(){
     const price = document.querySelector(".price");
@@ -95,12 +121,14 @@ function addRecord(){
 
 function generateTbody(){
     const tbody = document.querySelector(".tbody");
+    const discount = document.querySelector('input[name="discount"]:checked').value;
     let totalPrice = 0;
     dataOrder.forEach(obj =>{
         totalPrice += +obj.totalPrice;
     });
     localStorage.setItem("totalPrice", totalPrice);
     localStorage.setItem("tbody",tbody.innerHTML);
+    localStorage.setItem("discount", discount);
 }
 
 

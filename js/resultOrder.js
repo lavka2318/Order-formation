@@ -1,4 +1,5 @@
 const tbody = document.querySelector(".tbody");
+const order = document.querySelector(".order");
 
 tbody.innerHTML = localStorage.getItem("tbody");
 
@@ -10,7 +11,15 @@ for (let i=0; i<rowsB; i++){
     row.deleteCell(-1);
 }
 
-const totalPriceField = document.querySelector(".total-price");
 const totalPrice = +localStorage.getItem("totalPrice");
-totalPriceField.innerHTML = `Общая сумма заказа: ${totalPrice.toFixed(2)} руб.`;
-
+const discount = +localStorage.getItem("discount");
+if(discount !== 0 ){
+    let discountPrice = totalPrice - (discount * totalPrice);
+    order.innerHTML += `<p class="result-price">Общая сумма заказа: <b>${totalPrice.toFixed(2)} руб.</b></p>
+                        <p class="result-price">Скидка: <b>${discount*100}%</b></p>
+                        <p class="result-price">К оплате: <b>${discountPrice.toFixed(2)} руб.</b></p>
+                        <h3 class="thank-text">Спасибо, что выбираете нас!</h3>`;
+}else{
+    order.innerHTML += `<p class="result-price">Общая сумма заказа: <b>${totalPrice.toFixed(2)} руб.</b></p>
+                        <h3 class="thank-text">Спасибо, что выбираете нас!</h3>`;
+}
