@@ -8,7 +8,7 @@
         <link href="styles/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>Формирование Заказа</title>
     </head>
 </head>
@@ -18,31 +18,35 @@
     </header>
     <main>
         <h3 class="page-title">Ваш заказ</h3>
-        <table class="table-order">
-            <thead>
-            <tr>
-                <th>
-                    №
-                </th>
-                <th>
-                    Позиция
-                </th>
-                <th>
-                    Цена
-                </th>
-                <th>
-                    Вес
-                </th>
-                <th>
-                    Итого
-                </th>
+        <div class="order">
+            <table class="table-order">
+                <thead>
+                <tr>
+                    <th>
+                        №
+                    </th>
+                    <th>
+                        Позиция
+                    </th>
+                    <th>
+                        Цена
+                    </th>
+                    <th>
+                        Вес
+                    </th>
+                    <th>
+                        Сумма
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="tbody">
 
-            </tr>
-            </thead>
-            <tbody class="tbody">
+                </tbody>
+            </table>
+            <p class="total-price"></p>
+            <h3 class="thank-text">Спасибо, что выбираете нас!</h3>
+        </div>
 
-            </tbody>
-        </table>
     </main>
     <script src="js/data.js"></script>
 

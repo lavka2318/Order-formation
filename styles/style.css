@@ -1,6 +1,5 @@
 *{
-    font-weight: 200;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
@@ -8,11 +7,15 @@ body{
 }
 
 h3{
-    margin: 10px 0 0 0;
+    margin: 0;
 }
 
 h1{
     margin: 0;
+}
+
+main{
+    margin-bottom: 20px;
 }
 
 .header{
@@ -22,6 +25,8 @@ h1{
 
 .page-title{
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .add-form{
@@ -31,7 +36,6 @@ h1{
     justify-content: space-between;
 }
 
-/* Index */
 .item-category{
     margin-bottom: 15px;
 }
@@ -73,8 +77,17 @@ h1{
     color: red;
 }
 
+.select-wrapper{
+    width: 160px;
+}
+
 .select-category{
+    width: 100%;
     margin-bottom: 20px;
+}
+
+.input-weight{
+    width: 140px;
 }
 
 .add-button{
@@ -86,11 +99,15 @@ h1{
     color: white;
 }
 
-.table-order {
-
-    border-collapse: collapse;
+.order{
     width: 50%;
     margin: 20px auto;
+}
+
+.table-order {
+    border-collapse: collapse;
+    width: 100%;
+
 }
 .table-order, tr, td, th {
     border: 2px black solid;
@@ -110,6 +127,15 @@ h1{
     background-color: black;
     color: white;
 }
+.total-price{
+    margin-top: 5px;
+    text-align: right;
+}
+
+.thank-text{
+    text-align: center;
+}
+
 @media(max-width: 690px) {
     .price-wrapper{
         width: 90%;
@@ -140,8 +166,10 @@ h1{
     .order-btn{
         font-size: 14px;
     }
-    .table-order {
+    .order{
         width: 95%;
+    }
+    .table-order {
         font-size: 12px;
     }
     .delete-btn {
@@ -150,5 +178,14 @@ h1{
     .submit-btn {
         font-size: 13px;
     }
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        font-size: 14px;
+    }
+    .price{
+        margin-bottom: 20px;
+    }
+    .thank-text{
+        font-weight: bold;
+        font-size: 16px;
+    }
 }
-

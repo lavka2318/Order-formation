@@ -1,5 +1,6 @@
 const form = document.querySelector(".add-form");
 const selectCategory = document.querySelector(".select-category");
+let dataOrder = [];
 
 localStorage.setItem("number", 0);
 
@@ -30,39 +31,40 @@ function addRecord(){
     const num = +localStorage.getItem("number") + 1;
     localStorage.setItem("number", num);
     const categoryPrice = localStorage.getItem(category.value);
-    const totalPrice = (weight.value * categoryPrice).toFixed(2);
-    let metric;
+    const totalPrice = (+weight.value * categoryPrice).toFixed(2);
+    let metricPrice;
+    let metricWeight;
+
     if(category.value == 'Яйцо'){
-        metric = ' руб/10шт';
+        metricPrice = ' руб/10шт';
+        metricWeight = '';
     }else if(category.value == 'Доставка'){
-        metric ='';
+        metricPrice =' руб';
+        metricWeight = ''
     }else {
-        metric = ' руб/кг';
+        metricPrice = ' руб/кг';
+        metricWeight = ' кг'
     }
 
     const rec = {
         number: num,
-        category: category.value,
-        categoryPrice: categoryPrice + metric,
-        weight: weight.value,
-        totalPrice:totalPrice,
-        flagDel: false
+        totalPrice:totalPrice
     };
 
     dataOrder.push(rec);
 
     tbody.innerHTML += `<tr class="record">
-                            <td class="td-number">
+                            <td class="td-number td-text">
                                 ${num}
                             </td>
                             <td >
                                 ${category.value}
                             </td>
-                            <td>
-                                ${categoryPrice + metric}
+                            <td class="td-text">
+                                ${categoryPrice + metricPrice}
                             </td>
                             <td class="td-text">
-                                ${weight.value}
+                                ${weight.value + metricWeight}
                             </td>
                             <td class="td-text">
                                 ${totalPrice}
@@ -74,40 +76,16 @@ function addRecord(){
     weight.value = '';
 
     btnClickEvent();
-
 }
 
 function generateTbody(){
     const tbody = document.querySelector(".tbody");
-    localStorage.setItem("tbody",tbody.innerHTML);
-}
-
-function printDataTable(){
-    const tbody = document.querySelector(".tbody");
-
-    dataOrder.forEach(rec =>{
-        tbody.innerHTML += `<tr class="record">
-                            <td class="td-number">
-                                ${rec.number}
-                            </td>
-                            <td >
-                                ${rec.category}
-                            </td>
-                            <td>
-                                ${rec.categoryPrice} 
-                            </td>
-                            <td >
-                                ${rec.weight}
-                            </td>
-                            <td >
-                                ${rec.totalPrice}
-                            </td>
-                            <td >
-                                <button class="delete-btn">Удалить</button>
-                            </td>
-                        </tr>`;
+    let totalPrice = 0;
+    dataOrder.forEach(obj =>{
+        totalPrice += +obj.totalPrice;
     });
-    btnClickEvent();
+    localStorage.setItem("totalPrice", totalPrice);
+    localStorage.setItem("tbody",tbody.innerHTML);
 }
 
 
@@ -117,6 +95,7 @@ function btnClickEvent(){
         btn.addEventListener("click", event =>{
             const table  = document.querySelector(".table-order");
             table.deleteRow(event.target.value);
+            dataOrder.splice(event.target.value-1,1);
             changeNumber();
         });
     });
