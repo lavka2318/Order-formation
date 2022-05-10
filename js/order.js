@@ -10,7 +10,7 @@ categories.forEach(category => {
 
 form.innerHTML += `<label class="price">Цена за кг: ${localStorage.getItem(categories[0])}</label>
                     <div>
-                        <label>Вес: </label>
+                        <label style="font-size: 14px;">Вес: </label>
                         <input class="input-weight" placeholder="Введите вес...">
                     </div>
                    <button class="add-button" onclick="addRecord()">Добавить</button>`;
@@ -19,7 +19,15 @@ form.innerHTML += `<label class="price">Цена за кг: ${localStorage.getIt
 function changePrice(){
     const price = document.querySelector(".price");
     const selectCategory = document.querySelector(".select-category");
-    price.innerHTML = `Цена за кг: ${localStorage.getItem(selectCategory.value)}`;
+    const category = selectCategory.value;
+
+    if(category == "Доставка"){
+        price.innerHTML = `Цена за доставку: ${localStorage.getItem(selectCategory.value)} руб.`;
+    }else if(category == "Яйцо"){
+        price.innerHTML = `Цена за 10шт: ${localStorage.getItem(selectCategory.value)} руб.`;
+    }else {
+        price.innerHTML = `Цена за кг: ${localStorage.getItem(selectCategory.value)} руб.`;
+    }
 }
 
 
@@ -27,6 +35,13 @@ function addRecord(){
     const category = document.querySelector(".select-category");
     const weight = document.querySelector(".input-weight");
     const tbody = document.querySelector(".tbody");
+
+    if(isNaN(weight.value) || weight.value == "") {
+        weight.style.borderColor = "red";
+        return;
+    }else{
+        weight.style.borderColor = "";
+    }
 
     const num = +localStorage.getItem("number") + 1;
     localStorage.setItem("number", num);
@@ -64,7 +79,7 @@ function addRecord(){
                                 ${categoryPrice + metricPrice}
                             </td>
                             <td class="td-text">
-                                ${weight.value + metricWeight}
+                                ${(+weight.value).toFixed(2) + metricWeight}
                             </td>
                             <td class="td-text">
                                 ${totalPrice}

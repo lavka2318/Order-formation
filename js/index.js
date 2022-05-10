@@ -13,4 +13,3 @@ function addPrice(){
         localStorage.setItem(category, inputPrice.value);
     });
 }
-

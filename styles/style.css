@@ -1,8 +1,11 @@
 *{
     font-family: 'Roboto', sans-serif;
+    color: #662418;
 }
 
 body{
+    height: 100vh;
+    background-color: #E1E1E1;
     margin: 0;
 }
 
@@ -15,7 +18,7 @@ h1{
 }
 
 main{
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 .header{
@@ -65,15 +68,15 @@ main{
     margin: 0 auto;
     text-align: center;
     text-decoration: none;
-    padding: 2px 10px;
-    background-color: black;
+    padding: 4px 10px;
+    background-color: #662418;
     color: white;
 }
 
 
 .delete-btn{
     border: none;
-    background-color: white;
+    background-color: #E1E1E1;
     color: red;
 }
 
@@ -87,6 +90,7 @@ main{
 }
 
 .input-weight{
+    height: 20px;
     width: 140px;
 }
 
@@ -95,8 +99,12 @@ main{
     padding: 2px 10px;
     border: none;
     margin-bottom: 20px;
-    background-color: black;
+    background-color: #662418;
     color: white;
+}
+
+.add-button:hover, .order-btn:hover, .submit-btn:hover{
+    background-color: #8f3d2e;
 }
 
 .order{
@@ -123,8 +131,8 @@ main{
     margin: 20px auto;
     text-align: center;
     text-decoration: none;
-    padding: 2px 10px;
-    background-color: black;
+    padding: 5px 5px;
+    background-color: #662418;
     color: white;
 }
 .total-price{
@@ -136,6 +144,7 @@ main{
     text-align: center;
 }
 
+
 @media(max-width: 690px) {
     .price-wrapper{
         width: 90%;
@@ -145,6 +154,7 @@ main{
 @media(max-width: 460px) {
     .price-wrapper{
         width: 95%;
+        margin-right: 20px;
         justify-content: space-around;
     }
     .name-category{
@@ -180,9 +190,11 @@ main{
     }
     .select2-container .select2-selection--single .select2-selection__rendered {
         font-size: 14px;
+        color: #662418;
     }
     .price{
         margin-bottom: 20px;
+        font-size: 14px;
     }
     .thank-text{
         font-weight: bold;
